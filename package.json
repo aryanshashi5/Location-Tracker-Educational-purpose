@@ -1,0 +1,17 @@
+{
+  "name": "edustream-video-player",
+  "version": "1.0.0",
+  "description": "Video player website with video uploading and visitor tracking",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.19.0",
+    "express-useragent": "^2.2.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}

